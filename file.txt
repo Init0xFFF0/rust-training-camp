@@ -1,2 +1,1 @@
-rust hello world
-World
+hello world
