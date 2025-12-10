@@ -1,0 +1,22 @@
+{
+   // [关键] 精确匹配你电脑里的字体名 (第一个)
+    "editor.fontFamily": "JetBrainsMono Nerd Font,Menlo, Monaco, 'Courier New', monospace",
+    // 开启连字 (-> 变 →)
+    "editor.fontLigatures": true,
+    
+    // 字号和粗细
+    "editor.fontSize": 15,
+    "editor.fontWeight": "500",
+
+    // ================= 其他保持不变 =================
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "gruvboxMaterial.darkContrast": "hard",
+    "workbench.iconTheme": "material-icon-theme",
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+        "editor.formatOnSave": true
+    },
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.inlayHints.typeHints.enable": true,
+    "rust-analyzer.imports.granularity.group": "module"
+}

@@ -1,27 +1,7 @@
-use anyhow::{Context, Result};
-use clap::Parser;
-use std::{fs, path::PathBuf};
-
-#[derive(Parser)]
-#[command(version,about,long_about = None)]
-struct Grep {
-    pattern: String,
-
-    path: PathBuf,
-}
+use anyhow::Result;
+use clap::Parser; // 必须引入这个，否则不能调用 .parse()
+use mini_grep::{Args, run}; // 引入你自己的结构体 Args 和函数 run
 fn main() -> Result<()> {
-    let grep = Grep::parse();
-
-    let contents = fs::read_to_string(&grep.path)
-        .with_context(|| format!("could not read file `{}`", grep.path.display()))?;
-    // println!("read fille:{:?}", contents);
-
-    for line in contents.lines() {
-        if line.contains(&grep.pattern) {
-            println!("{}", line);
-        }
-    }
-    Ok(())
-    // println!("Searching for: {}", grep.pattern);
-    // println!("In file: {}", grep.path.display());
+    let args = Args::parse();
+    run(args)
 }
