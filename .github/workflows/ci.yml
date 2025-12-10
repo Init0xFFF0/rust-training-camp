@@ -1,0 +1,30 @@
+name: Rust CI
+
+# 1. 触发机制：谁来激活？
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest  # 2. 运行环境：在哪跑？(Linux VM)
+
+    steps:
+      # 3. 核心步骤：干什么？
+      
+      # 步骤 A: 把代码从仓库拉到虚拟机
+      - uses: actions/checkout@v4
+
+      # 步骤 B: (可选但推荐) 智能缓存依赖，大幅加速构建
+      - uses: Swatinem/rust-cache@v2
+
+      # 步骤 C: 编译 (检查代码能否跑通)
+      - name: Build
+        run: cargo build --verbose
+
+      # 步骤 D: 测试 (检查逻辑对不对)
+      - name: Test
+        run: cargo test --verbose
